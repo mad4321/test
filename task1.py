@@ -24,7 +24,7 @@ async def create_file(filename,size):
 #            f.write(b'\0')
 #            f.close()
         echo_proc = Popen(['yes', Data], stdout=PIPE)
-        dd_proc = Popen(['dd','of='+filename,'bs=1','count='+str(size),'conv=notrunc'],stdin=echo_proc.stdout, stdout=PIPE,stderr=PIPE)
+        dd_proc = Popen(['dd','of='+filename,'bs='+str(size),'count=1','iflag=fullblock'],stdin=echo_proc.stdout, stdout=PIPE,stderr=PIPE)
         out, err = dd_proc.communicate()
         rc = dd_proc.returncode
     except (OSError, IOError) as err:
