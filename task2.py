@@ -21,7 +21,7 @@ async def main(hosts_list):
    await asyncio.gather(*[do_task(host,cmd) for host in hosts_list])
 
 if __name__ == '__main__':
-    if len(sys.argv)<2:
+    if len(sys.argv)<3:
         print("Usage: task2.py <command> <host ip 1> [host ip 2] ... [host ip 3]")
         sys.exit(2)
 
